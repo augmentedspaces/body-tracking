@@ -10,9 +10,8 @@ import ARKit
 import RealityKit
 import Combine
 
-
-// Metal library.
-let library = MTLCreateSystemDefaultDevice()!.makeDefaultLibrary()!
+// FILTER:
+import CoreImage.CIFilterBuiltins
 
 
 // MARK: - View model for handling communication between the UI and ARView.
@@ -64,6 +63,9 @@ class SimpleARView: ARView, ARSessionDelegate {
     // Rigged character entity.
     var character: BodyTrackedEntity!
     
+    // FILTER:
+    var context: CIContext?
+    var device: MTLDevice!
 
     init(frame: CGRect, viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -108,8 +110,65 @@ class SimpleARView: ARView, ARSessionDelegate {
              
         // Set session delegate.
         arView.session.delegate = self
+    
+
+        // FILTER:
+        arView.renderCallbacks.prepareWithDevice = { [weak self] device in
+            self?.context = CIContext(mtlDevice: device)
+            self?.device = device
+        }
+        arView.renderCallbacks.postProcess = { [weak self] context in
+            self?.filter(context)
+        }
+    }
+    
+    // FILTER:
+    func filter(_ context: ARView.PostProcessContext) {
+        let inputImage = CIImage(mtlTexture: context.sourceColorTexture)!
+
+        // Change filter here.
+        // Reference: https://developer.apple.com/documentation/coreimage/processing_an_image_using_built-in_filters
+
+        // Crystallize filter.
+        let filter = CIFilter.crystallize()
+        filter.setValue(40, forKey: kCIInputRadiusKey)
+        
+        /*
+        // Pixellate filter
+        let filter = CIFilter.pixellate()
+        filter.setValue(20, forKey: kCIInputScaleKey)
+        */
+         
+        /*
+        // Sepia filter
+        let filter = CIFilter.sepiaTone()
+        filter.setValue(0.9, forKey: kCIInputIntensityKey)
+         */
+         
+        /*
+        // B&W filter
+        let filter = CIFilter.photoEffectNoir()
+         */
+         
+        /*
+        // Bloom filter
+        let filter = CIFilter.bloom()
+        filter.setValue(1.0, forKey: kCIInputIntensityKey)
+        filter.setValue(100, forKey: kCIInputRadiusKey)
+         */
+
+        filter.inputImage = inputImage
+        
+        
+        let destination = CIRenderDestination(mtlTexture: context.targetColorTexture,
+                                              commandBuffer: context.commandBuffer)
+        
+        destination.isFlipped = false
+        
+        _ = try? self.context?.startTask(toRender: filter.outputImage!, to: destination)
     }
 
+    
     /*
     // Process UI signals.
     func processUISignal(_ signal: ViewModel.UISignal) {

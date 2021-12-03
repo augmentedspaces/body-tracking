@@ -13,7 +13,6 @@
 		6AA66C0C2744AAE20088A0EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AA66C0B2744AAE20088A0EB /* Preview Assets.xcassets */; };
 		6AA66C132744B7AA0088A0EB /* biped-rig-export.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6AA66C122744B7AA0088A0EB /* biped-rig-export.usdz */; };
 		6AA66C152744BBBF0088A0EB /* biped-robot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6AA66C142744BBBF0088A0EB /* biped-robot.usdz */; };
-		6AA66C3327453ADF0088A0EB /* shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6AA66C3227453ADF0088A0EB /* shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +23,6 @@
 		6AA66C0B2744AAE20088A0EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6AA66C122744B7AA0088A0EB /* biped-rig-export.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "biped-rig-export.usdz"; sourceTree = "<group>"; };
 		6AA66C142744BBBF0088A0EB /* biped-robot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "biped-robot.usdz"; sourceTree = "<group>"; };
-		6AA66C3227453ADF0088A0EB /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +59,6 @@
 				6AA66C142744BBBF0088A0EB /* biped-robot.usdz */,
 				6AA66C022744AAE10088A0EB /* AppDelegate.swift */,
 				6AA66C042744AAE10088A0EB /* ContentView.swift */,
-				6AA66C3227453ADF0088A0EB /* shaders.metal */,
 				6AA66C082744AAE20088A0EB /* Assets.xcassets */,
 				6AA66C0A2744AAE20088A0EB /* Preview Content */,
 			);
@@ -150,7 +147,6 @@
 			files = (
 				6AA66C052744AAE10088A0EB /* ContentView.swift in Sources */,
 				6AA66C032744AAE10088A0EB /* AppDelegate.swift in Sources */,
-				6AA66C3327453ADF0088A0EB /* shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +277,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BodyTracking/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HY8AUX8L27;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -312,7 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BodyTracking/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HY8AUX8L27;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
